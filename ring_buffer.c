@@ -9,9 +9,8 @@
 /* element */
 /* int Pop() - retrieve an element from the queue. We assume that the queue is not empty.  */
 
-#include <linux/limits.h>
 #include <stdio.h>
-#define MAX_SIZE 30
+#define MAX_SIZE 5
 
 int arr[MAX_SIZE];
 int top = 0;
@@ -26,26 +25,44 @@ int IsFull() {
 }
 
 void Push(int nNewValue) {
-    arr[top] = nNewValue;
-    top = (top + 1) % MAX_SIZE;
+    if (!IsFull()) {
+        arr[top] = nNewValue;
+        top = (top + 1) % MAX_SIZE;
+    } else {
+        printf("Queue is full. Cannot push %d.\n", nNewValue);
+    }    
 }
 
 int Pop() {
-    int value = arr[bottom];
-    bottom = (bottom + 1) % MAX_SIZE;
-    return value;
+    if (!IsEmpty()) {
+        int poppedValue = arr[bottom];
+        bottom = (bottom + 1) % MAX_SIZE;
+        return poppedValue;
+    } else {
+        printf("Queue is empty. Cannot pop.\n");
+        return -1;  // Assuming -1 as a placeholder for an empty queue
+    }    
 }
 
 int main() {
+    printf("Is Empty: %d\n", IsEmpty());
+
     Push(10);
     Push(20);
     Push(30);
+    Push(40);
 
-    while (!IsEmpty()) {
-        int value = Pop();
-        printf("%d ", value);
-    }
-    printf("\n");
+    printf("Is Empty: %d\n", IsEmpty());
+    printf("Is Full: %d\n", IsFull());
 
+    printf("Popped: %d\n", Pop());
+    printf("Popped: %d\n", Pop());
+
+    printf("Is Full: %d\n", IsFull());
+
+    Push(50);
+    Push(60);
+
+    printf("Is Full: %d\n", IsFull());
     return 0;
 }
