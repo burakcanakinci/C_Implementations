@@ -7,50 +7,34 @@
 #include <stdio.h>
 
 unsigned int BinSearch(unsigned int *pArray, unsigned int uArraySize, unsigned int uValue) {
-    unsigned int low = 0;
-    unsigned int high = uArraySize - 1;
-    unsigned int iterations = 0; // Counter for iterations
+    int low = 0;
+    int high = uArraySize - 1;
 
     while (low <= high) {
-        iterations++; // Increment with each loop iteration
-
-        unsigned int mid = low + (high - low) / 2;
+        int mid = low + (high - low) / 2;
 
         if (pArray[mid] == uValue) {
-            printf("Value found in %u iterations\n", iterations); 
-            return mid; 
+            return mid;  // Value found, return its index
         } else if (pArray[mid] < uValue) {
-            low = mid + 1; 
+            low = mid + 1;  // Discard left half
         } else {
-            high = mid - 1; 
+            high = mid - 1;  // Discard right half
         }
     }
-
-    printf("Value not found in %u iterations\n", iterations); 
-    return 0xFFFF; 
+    return 0xFFFF;  // Value not found
 }
 
 int main() {
-    unsigned int uArraySize, uValue;
+    unsigned int sortedArray[] = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+    unsigned int arraySize = sizeof(sortedArray) / sizeof(sortedArray[0]);
+    unsigned int searchValue = 80;
 
-    printf("Enter the size of the sorted array: ");
-    scanf("%u", &uArraySize);
-
-    int array[uArraySize];
-    printf("Enter the elements of the array in ascending order:\n");
-    for (int i = 0; i < uArraySize; i++) {
-        scanf("%d", &array[i]);
-    }
-
-    printf("Enter the value to search: ");
-    scanf("%u", &uValue);
-
-    unsigned int result = BinSearch(array, uArraySize, uValue);
+    unsigned int result = BinSearch(sortedArray, arraySize, searchValue);
 
     if (result != 0xFFFF) {
-        printf("Value found at index: %u\n", result);
+        printf("Value %u found at index %u\n", searchValue, result);
     } else {
-        printf("Value not found\n");
+        printf("Value %u not found in the array\n", searchValue);
     }
 
     return 0;
