@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 void Reverse(char* ptr) {
-    if (ptr == NULL) return;
+    if (ptr == NULL || *ptr == '\0') return;
 
     int start = 0, end = 0;
     
@@ -12,8 +12,9 @@ void Reverse(char* ptr) {
     while (ptr[end] != '\0') {
         end++;
     }
-    end--; // Adjust the end index to exclude the null terminator
-    // Reverse the string characters
+    end--; // Move back to the last character before null terminator
+
+    // Swap characters from the beginning and end until pinters meet or cross
     while (start < end) {
         char temp = ptr[start];
         ptr[start] = ptr[end];
