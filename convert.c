@@ -7,46 +7,24 @@
 /* " 16025"  */
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
 
 void Conv(int sValue, char *pBuffer) {
-    bool isNegative = sValue < 0;
-    int absValue = abs(sValue);
-
-    int i = 4;
-    pBuffer[5] = '\0';
-
-    if(absValue == 0) {
-        pBuffer[i--] = '0';
+    if (sValue < 0) {
+        sprintf(pBuffer, "-%5d", -sValue);
+    } else {
+        sprintf(pBuffer, " %5d", sValue);
     }
-
-    while (absValue > 0) {
-        pBuffer[i--] = (absValue % 10) + '0';
-        absValue /= 10;
-    }
-
-    while (i >= 0) {
-        pBuffer[i--] = ' ';
-    }
-
-    pBuffer[0] = isNegative ? '-' : ' ';
-
 }
 
 int main() {
-    int number;
-    char buffer[7]; // Allocate enough space for the string "-DDDDD\0"
+    char buffer1[8];  // Adjust the size as needed
+    char buffer2[8];  // Adjust the size as needed
 
-    printf("Enter a signed 16-bit integer: ");
-    while (scanf("%d", &number) != 1) {
-        printf("Invalid input. Please enter a number: ");
-        scanf("%*[^\n]"); // Clear invalid input from the buffer
-    }
+    Conv(-26, buffer1);
+    Conv(16025, buffer2);
 
-    Conv(number, buffer);
-    printf("Converted string: %s\n", buffer);
+    printf("\"%s\"\n", buffer1);
+    printf("\"%s\"\n", buffer2);
 
     return 0;
 }
-
