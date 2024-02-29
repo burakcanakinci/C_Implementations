@@ -7,21 +7,20 @@
 /* Input = 0x0000, Output = 0x00  */
 
 #include <stdio.h>
-#include <stdbool.h>
 
 unsigned char CheckBit(unsigned int uValue) {
-    bool oneBitIsSet = (uValue != 0) && !(uValue & (uValue - 1));
-    return oneBitIsSet ? '1' : '0';
+    // Check if exactly one bit is set in the 16-bit number
+    return (uValue != 0 && (uValue & (uValue - 1)) == 0) ? 0x01 : 0x00;
 }
 
 int main() {
-    unsigned int uValue;
+    unsigned int input1 = 0x0400;
+    unsigned int input2 = 0x0600;
+    unsigned int input3 = 0x0000;
 
-    printf("Enter a 16-bit unsigned integer(e.g. 0x0400): ");
-    scanf("%x", &uValue);
-
-    unsigned char result = CheckBit(uValue);
-    printf("Result: %c\n", result);
+    printf("Input = 0x%04X, Output = 0x%02X\n", input1, CheckBit(input1));
+    printf("Input = 0x%04X, Output = 0x%02X\n", input2, CheckBit(input2));
+    printf("Input = 0x%04X, Output = 0x%02X\n", input3, CheckBit(input3));
 
     return 0;
 }
