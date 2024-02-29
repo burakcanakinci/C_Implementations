@@ -3,7 +3,7 @@
 /* buffer. Format of the string should be "-DDDDD", if the number is positive the first character is space. */
 /* The string should not contain leading zeroes. */
 /* Example: */
-/* "- 26" */
+/* "-   26" */
 /* " 16025"  */
 
 #include <stdio.h>
