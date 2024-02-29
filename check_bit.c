@@ -1,4 +1,3 @@
-/* Problem 1 */
 /* Write C function which takes 16 bit number and should determine whether exactly one bit in this */
 /* number is set. If one bit is set, the function should return "1" otherwise "0". The prototype of function is */
 /* "unsigned char CheckBit(unsigned int uValue)". */
@@ -11,15 +10,15 @@
 #include <stdbool.h>
 
 unsigned char CheckBit(unsigned int uValue) {
-    bool oneBitIsSet = (uValue != 0) && ! (uValue & (uValue - 1));
+    bool oneBitIsSet = (uValue != 0) && !(uValue & (uValue - 1));
     return oneBitIsSet ? '1' : '0';
 }
 
 int main() {
     unsigned int uValue;
 
-    printf("Enter a 16-bit unsigned integer: ");
-    scanf("%u", &uValue);
+    printf("Enter a 16-bit unsigned integer(e.g. 0x0400): ");
+    scanf("%x", &uValue);
 
     unsigned char result = CheckBit(uValue);
     printf("Result: %c\n", result);

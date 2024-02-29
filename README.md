@@ -1,1 +1,1 @@
-# 10 C Problems and their solution
+# 10 C problems and their solutions

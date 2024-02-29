@@ -1,4 +1,3 @@
-/* Problem 7 */
 /* Write a function which performs binary search. The prototype of the function is: */
 /* "unsigned int BinSearch(unsigned int *pArray, unsigned int uArraySize, unsigned int uValue)", where */
 /* pArray is pointer to sorted array with ascending order of elements, uArraySize is number of elements in */

@@ -1,4 +1,3 @@
-/* Problem 6 */
 /* Write a function, which performs bubble sort. The prototype of the function is "void Bubble(int* pArray, */
 /* unsigned int uLen)”, where pArary is a pointer to unsorted array and uLen is its size.  */
 
