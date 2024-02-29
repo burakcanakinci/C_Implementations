@@ -1,0 +1,42 @@
+/* Write a function, which performs addition of positive numbers, represented as strings. The result is */
+/* stored into a buffer, passed as parameter to the function. We assume that the result buffer is always big */
+/* enough. The prototype of the function is "void Add(const char* p1, const char* p2, char* result);” */
+/* Example: */
+/* if the function is called as follows: Add( “12345”, “678”, result) , the content of “result” must be */
+/* “13023” or " 13023".  */
+
+#include <stdio.h>
+#include <string.h>
+void Add(const char* p1, const char* p2, char* result) {
+    int len1 = strlen(p1);
+    int len2 = strlen(p2);
+    int maxLength = len1 > len2 ? len1 : len2;
+
+    int carry = 0;
+    int resultIndex = maxLength;
+    result[resultIndex + 1] = '\0';
+
+    for (int i = len1 - 1, j = len2 - 1; i >= 0 || j >= 0 || carry > 0; i--, j--) {
+        int digit1 = i >= 0 ? p1[i] - '0' : 0;
+        int digit2 = j >= 0 ? p2[j] - '0' : 0;
+
+        int sum = digit1 + digit2 + carry;
+        result[--resultIndex] = (sum % 10) + '0';
+        carry = sum / 10;
+    }
+
+    if (result[0] == '0') {
+        memmove(result, result + 1, maxLength + 1);
+    }
+}
+
+int main() {
+    char num1[] = "12345";
+    char num2[] = "678";
+    char result[20];
+
+    Add(num1, num2, result);
+    printf("Result: %s\n", result);
+
+    return 0;
+}
