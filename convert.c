@@ -14,8 +14,8 @@ void Conv(int sValue, char *pBuffer) {
     bool isNegative = sValue < 0;
     int absValue = abs(sValue);
 
-    int i = 5;
-    pBuffer[6] = '\0';
+    int i = 4;
+    pBuffer[5] = '\0';
 
     if(absValue == 0) {
         pBuffer[i--] = '0';
@@ -26,13 +26,12 @@ void Conv(int sValue, char *pBuffer) {
         absValue /= 10;
     }
 
-    // Shift digits if necessary (to accomodate the extra space)
-    if (!isNegative) {
-        for (int j = 5; j > 0; j--) {
-            pBuffer[j] = pBuffer[j - 1];
-        }
+    while (i >= 0) {
+        pBuffer[i--] = ' ';
     }
+
     pBuffer[0] = isNegative ? '-' : ' ';
+
 }
 
 int main() {
@@ -47,5 +46,7 @@ int main() {
 
     Conv(number, buffer);
     printf("Converted string: %s\n", buffer);
+
+    return 0;
 }
 
