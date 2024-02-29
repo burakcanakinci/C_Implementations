@@ -40,7 +40,7 @@ void Add(const char* p1, const char* p2, char* result) {
 int main() {
     const char* num1 = "12345";
     const char* num2 = "678";
-    char result[10];  // Adjust the size as needed
+    char result[10];
 
     Add(num1, num2, result);
 
