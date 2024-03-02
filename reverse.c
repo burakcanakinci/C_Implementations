@@ -14,7 +14,7 @@ void Reverse(char* ptr) {
     }
     end--; // Move back to the last character before null terminator
 
-    // Swap characters from the beginning and end until pinters meet or cross
+    // Swap characters from the beginning and end until pointers meet or cross
     while (start < end) {
         char temp = ptr[start];
         ptr[start] = ptr[end];
