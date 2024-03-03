@@ -5,7 +5,7 @@
 #include <stdbool.h>
 
 void Bubble(int* pArray, unsigned int uLen) {
-    int i = 0;
+    unsigned int i = 0;
     bool swapped;
     do {
         swapped = false;
