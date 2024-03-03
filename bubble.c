@@ -2,17 +2,23 @@
 /* unsigned int uLen)”, where pArary is a pointer to unsorted array and uLen is its size.  */
 
 #include <stdio.h>
+#include <stdbool.h>
 
 void Bubble(int* pArray, unsigned int uLen) {
-    for (unsigned int i = 0; i < uLen - 1; ++i) {
+    int i = 0;
+    bool swapped;
+    do {
+        swapped = false;
         for (unsigned int j = 0; j < uLen - i - 1; ++j) {
             if (pArray[j] > pArray[j + 1]) {
                 int temp = pArray[j];
                 pArray[j] = pArray[j + 1];
                 pArray[j + 1] = temp;
+                swapped = true;
             }
         }
-    }
+        i++;
+    } while(swapped);
 }
 
 int main() {
