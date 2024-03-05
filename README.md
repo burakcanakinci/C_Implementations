@@ -1,1 +1,1 @@
-# 10 C problems and their solutions
+# Problems and their solutions using C
